@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "WS Interceptor PoC",
+  "version": "1.0.0",
+  "permissions": [
+    "background",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:5001/*",
+    "<all_urls>" 
+  ],
+  "action": {
+    "default_title": "WS Interceptor Control Hub",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "src/core/background.ts",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/core/proxy.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
